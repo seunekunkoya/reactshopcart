@@ -13,11 +13,14 @@ dotenv.config({ path: "./src/config/config.env"});
 connectDB();
 
 const carts = require("./src/routes/carts");
+const prodcart = require("./src/Cart/cartroute");
 
 const app = express();
 
+require('./src/routehandler')(app);
+
 //files for keeping image
-app.use('/files', express.static("files"));
+app.use("./src/files", express.static("files"));
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
@@ -25,8 +28,6 @@ if (process.env.NODE_ENV === 'development') {
   
 app.use(cors());
 app.use(bodyParser.json());
-
-app.use("/api/v1/carts", carts);
 
 const PORT = process.env.PORT || 4000;
 

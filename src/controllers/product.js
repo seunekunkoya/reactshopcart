@@ -17,12 +17,15 @@ exports.getProduct = async (req, res) => {
 }
 
 exports.addProduct = async (req, res) => {
+    console.log(req.file);
     try {
         const payload = {
             name: req.body.name,
             price: req.body.price,
             image: req.file.path
         }
+
+        
 
         const product = await productRepository.createProduct({
             ...payload

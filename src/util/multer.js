@@ -1,13 +1,15 @@
 const multer = require("multer");
-const path = require("path");
+//const path = require("path");
+
+//const path = require("../files");
 
 //image upload
 const storage = multer.diskStorage({
     destination: (req, res, cb) => {
-         cb(null, path.join("../reactcart/files"));
+         cb(null, "../reactcart/src/files");
     },
     filename: (req, file, cb) => {
-        cb(null, new Date().toISOString() + file.originalname);
+        cb(null, Date.now() + '--' + file.originalname);
     }
 });
 // checking file type
