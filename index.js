@@ -17,17 +17,17 @@ const prodcart = require("./src/Cart/cartroute");
 
 const app = express();
 
+app.use(cors());
+app.use(bodyParser.json());
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
 require('./src/routehandler')(app);
 
 //files for keeping image
 app.use("./src/files", express.static("files"));
-
-if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'));
-  }
-  
-app.use(cors());
-app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 4000;
 

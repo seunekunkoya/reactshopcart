@@ -1,5 +1,5 @@
 const cartRepository = require('./cartrepository')
-const productRepository = require('../controllers/product');
+const productRepository = require('../util/repository');
 
 exports.addItemToCart = async (req, res) => {
     console.log(req.body);

@@ -25,8 +25,6 @@ exports.addProduct = async (req, res) => {
             image: req.file.path
         }
 
-        
-
         const product = await productRepository.createProduct({
             ...payload
         });
